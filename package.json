@@ -11,7 +11,9 @@
     "lint": "eslint src/ cypress/",
     "test:unit": "jest src/",
     "test:e2e": "npm run build && cypress run --browser chrome --headless",
-    "build": "npx babel src -d dist && cp src/reporter/template.hbs dist/reporter/"
+    "build": "npx babel src -d dist && cp src/reporter/template.hbs dist/reporter/",
+    "prepare": "husky install",
+    "ci:lint": "echo 'export COMMIT_MESSAGE=$(git log -1 --pretty=format:\"%s\")' >> $BASH_ENV && source $BASH_ENV & echo '$COMMIT_MESSAGE' | npx commitlint"
   },
   "repository": {
     "type": "git",
@@ -53,6 +55,8 @@
     "@babel/core": "^7.14.8",
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
     "babel-eslint": "^7.2.3",
     "babel-jest": "^27.2.2",
     "babel-preset-env": "^1.7.0",
@@ -62,6 +66,7 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-import": "^2.22.1",
+    "husky": "^8.0.0",
     "jest": "^27.0.6",
     "prettier": "^2.1.2",
     "semantic-release": "^19.0.2"

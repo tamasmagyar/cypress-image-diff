@@ -13,6 +13,9 @@ jobs:
           name: Build docker
           command: make build
       - run:
+          name: Run husky and commitlint
+          command: ci-lint
+      - run:
           name: Run eslint
           command: make lint-test
       - run:

@@ -1,5 +1,7 @@
 build:
 	docker-compose build
+ci-lint:
+	docker-compose run --no-deps --rm test bash -c 'ci:lint'
 lint-test:
 	docker-compose run --no-deps --rm test bash -c 'npm run lint'
 unit-test:
